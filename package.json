@@ -4,13 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+    "test": "karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
     "express": "3.4.0",
     "jade": "*"
-  },
-  "devDependencies": {
-    "karma": "~0.12.16"
   }
 }
