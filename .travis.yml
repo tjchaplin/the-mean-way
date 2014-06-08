@@ -5,6 +5,7 @@ before_script:
 - npm install -g karma-cli
 - npm install -g bower
 - bower install
+- curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 env:
   global:
   - secure: erfYaqILkP87nW8cv/Y10NFdXxmrHtMVuq2869Tmm64NzPi83gGkma9AcBF3bCraXV3okGAcIkixwO8KvWhgKNSRq96kW+J6AiW8a66F7Yr6KlvXUwer0i/VDxsnJiOq6OH4kA7hEpsn2f+zV9x4Esil2z5gGwKphD7yiyJb5bQ=
