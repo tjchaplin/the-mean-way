@@ -5,35 +5,9 @@ describe('Given we are displaying products', function() {
     browser.get('products.html');
 
     describe('When displaying a products detail', function() {
-        it('should have 3 products', function() {
-          var elems = element.all(by.repeater('product in products'));
-          expect(elems.count()).toBe(3);
-        });
-
-        it('should load the home page', function() {
-            var ptor = protractor.getInstance();
-            var ele = by.id('tp');
-            expect(ptor.isElementPresent(ele)).toBe(true);
-        });
-
-        it('should be able to get row 1 product', function() {
-            var productTitle = element(by.repeater('product in products').row(0));
-            expect(productTitle).not.toBeNull();
-        });
-
-        it('should be able to get product title', function(done) {
-            var productTitle = element(by.repeater('product in products').row(0).column('{{product.name}}'));
-            productTitle.then(function(title){
-                expect(title).getText().not.toBeNull();
-                console.log(title);
-                done();
-            })
-            // expect(productTitle).not.toBeNull();
-        });
-
-        it('should be able to get product description', function() {
-            var productDescription = element(by.repeater('product in products').row(0).column('{{product.description}}'));
-            expect(productDescription).not.toBeNull();
+        it('Should have products', function() {
+          var products = element.all(by.repeater('product in products'));
+          expect(products.count()).toBeGreaterThan(0);
         });
     });
 });
