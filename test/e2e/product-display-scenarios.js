@@ -21,9 +21,14 @@ describe('Given we are displaying products', function() {
             expect(productTitle).not.toBeNull();
         });
 
-        it('should be able to get product title', function() {
+        it('should be able to get product title', function(done) {
             var productTitle = element(by.repeater('product in products').row(0).column('{{product.name}}'));
-            expect(productTitle).not.toBeNull();
+            productTitle.then(function(title){
+                expect(title).getText().not.toBeNull();
+                console.log(title);
+                done();
+            })
+            // expect(productTitle).not.toBeNull();
         });
 
         it('should be able to get product description', function() {
