@@ -12,5 +12,7 @@ before_script:
   - npm install -g protractor
   - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 script:
+  - chmod +x ./scripts/startServer.sh
+  - chmod +x ./scripts/startTestOnSauceLabs.sh
   - ./scripts/startServer.sh
   - ./scripts/startTestOnSauceLabs.sh
