@@ -16,6 +16,11 @@ describe('Given we are displaying products', function() {
             expect(ptor.isElementPresent(ele)).toBe(true);
         });
 
+        it('should be able to get row 1 product', function() {
+            var productTitle = element(by.repeater('product in products').row(0));
+            expect(productTitle).not.toBeNull();
+        });
+
         it('should be able to get product title', function() {
             var productTitle = element(by.repeater('product in products').row(0).column('{{product.name}}'));
             expect(productTitle).not.toBeNull();
