@@ -6,6 +6,12 @@ describe('Given we are displaying products', function() {
 
     describe('When displaying a products detail', function() {
 
+        it('should load the home page', function() {
+            var ptor = protractor.getInstance();
+            var ele = by.id('tp');
+            expect(ptor.isElementPresent(ele)).toBe(true);
+        });
+        
         it('should be able to get product title', function() {
             var productTitle = element(by.repeater('product in products').row(0).column('{{product.name}}'));
             expect(productTitle).not.toBeNull();
