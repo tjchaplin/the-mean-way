@@ -10,7 +10,8 @@ before_script:
   - npm install -g bower
   - bower install
   - npm install -g protractor
-  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
+  - chmod +x ./scripts/sauce_connect_setup.sh
+  - ./scripts/sauce_connect_setup.sh
 script:
   - chmod +x ./scripts/startServer.sh
   - chmod +x ./scripts/startTestOnSauceLabs.sh
