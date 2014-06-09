@@ -6,11 +6,13 @@ env:
     - secure: erfYaqILkP87nW8cv/Y10NFdXxmrHtMVuq2869Tmm64NzPi83gGkma9AcBF3bCraXV3okGAcIkixwO8KvWhgKNSRq96kW+J6AiW8a66F7Yr6KlvXUwer0i/VDxsnJiOq6OH4kA7hEpsn2f+zV9x4Esil2z5gGwKphD7yiyJb5bQ=
     - secure: OcYmi+Gnrzm0BVBSXqzUutElSVa3H207jnbxVLnijNPMZy8vh7/5nsqo6khLMzjTS44CBb6v+boJD1BlwqgEpoJ4g7dg0kCjamX1tjS6gdo28f6fGway7fT+jWgrnZnC9fFdHUhCUkbYNcDmYc2yRggz6b5I1GIeUbmzaVMOPGM=
     - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
+    - LOGS_DIR=/tmp/protractor-build/logs
 before_script:
   - npm install -g karma-cli
   - npm install -g bower
   - bower install
   - npm install -g protractor
+  - mkdir -p $LOGS_DIR
   - chmod +x ./scripts/sauce_connect_setup.sh
   - ./scripts/sauce_connect_setup.sh
   - chmod +x ./scripts/wait_for_browser_provider.sh
@@ -20,3 +22,6 @@ script:
   - chmod +x ./scripts/startTestOnSauceLabs.sh
   - ./scripts/startServer.sh
   - ./scripts/startTestOnSauceLabs.sh
+after_script:
+  - chmod +x ./scripts/print_logs.sh
+  - ./scripts/print_logs.sh
