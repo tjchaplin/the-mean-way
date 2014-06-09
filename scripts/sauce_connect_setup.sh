@@ -15,6 +15,7 @@ set -e
 CONNECT_URL="https://d2nkw87yt5k0to.cloudfront.net/downloads/sc-latest-linux.tar.gz"
 CONNECT_DIR="/tmp/sauce-connect-$RANDOM"
 CONNECT_DOWNLOAD="sc-latest-linux.tar.gz"
+READY_FILE="/tmp/sauce-connect-ready-$RANDOM"
 
 # Get Connect and start it
 mkdir -p $CONNECT_DIR
@@ -30,9 +31,14 @@ ARGS=""
 if [ ! -z "$TRAVIS_JOB_NUMBER" ]; then
   ARGS="$ARGS --tunnel-identifier $TRAVIS_JOB_NUMBER"
 fi
-if [ ! -z "$BROWSER_PROVIDER_READY_FILE" ]; then
-  ARGS="$ARGS --readyfile $BROWSER_PROVIDER_READY_FILE"
+if [ ! -z "$READY_FILE" ]; then
+  ARGS="$ARGS --readyfile $READY_FILE"
 fi
 
 echo "Starting Sauce Connect in the background"
 sauce-connect/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -v $ARGS &
+
+# Wait for Connect to be ready before exiting
+while [ ! -f $READY_FILE ]; do
+  sleep .5
+done
