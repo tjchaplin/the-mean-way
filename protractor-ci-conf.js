@@ -1,5 +1,5 @@
 exports.config = {
-  // allScriptsTimeout: 11000,
+  allScriptsTimeout: 11000,
   
   sauceUser: process.env.SAUCE_USERNAME,
   sauceKey: process.env.SAUCE_ACCESS_KEY,
