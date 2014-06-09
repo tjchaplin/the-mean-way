@@ -13,6 +13,8 @@ before_script:
   - npm install -g protractor
   - chmod +x ./scripts/sauce_connect_setup.sh
   - ./scripts/sauce_connect_setup.sh
+  - chmod +x ./scripts/wait_for_browser_provider.sh
+  - ./scripts/wait_for_browser_provider.sh
 script:
   - chmod +x ./scripts/startServer.sh
   - chmod +x ./scripts/startTestOnSauceLabs.sh
