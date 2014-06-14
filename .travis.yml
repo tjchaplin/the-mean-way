@@ -8,11 +8,15 @@ env:
 before_script:
   - npm install -g karma-cli
   - npm install -g protractor
-  - npm install -g bower
-  - bower install
   - chmod +x ./scripts/*
   - ./scripts/sauce_connect_setup.sh
 script:
   - node app.js &
   - protractor protractor-ci-conf.js
   - npm test
+notifications:
+  webhooks: 
+    urls:
+      - http://webhooks.nodejitsu.com/1/deploy
+    on_success: always
+    on_failure: never
